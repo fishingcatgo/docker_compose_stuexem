@@ -1,0 +1,17 @@
+
+version: "3.9"
+services:
+  web:
+    build: .
+    ports:
+      - "5000:5000"
+    volumes:
+      - .:/code
+    environment:
+      - https_proxy=http://10.0.65.157:7890
+      - http_proxy=http://10.0.65.157:7890
+  redis:
+    image: "redis:alpine"
+    ports:
+       - '6377:6379'
+

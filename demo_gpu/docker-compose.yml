@@ -1,0 +1,20 @@
+
+
+services:
+  test:
+    image: nvidia/cuda:12.3.1-base-ubuntu20.04
+    command: nvidia-smi
+    deploy:
+      resources:
+        limits:
+          cpus: '0.50'
+          memory: 50G
+          pids: 2
+        reservations:
+          devices:
+            - driver: nvidia
+              #count: all
+              device_ids: ['0', '3']
+              capabilities: [gpu]
+
+
